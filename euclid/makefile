@@ -1,6 +1,7 @@
 
 JARFILE = euclidtile.jar
 JSRC = EuclidTile.java EuclidTileTest.java
+VERSION_FILE = version.EuclidTile
 TSTILTS = java -classpath $(JARFILE):stilts.jar -Djel.classes=EuclidTile \
                uk.ac.starlink.ttools.Stilts
 
@@ -13,12 +14,16 @@ build: $(JARFILE)
 stilts.jar:
 	curl -OL http://www.starlink.ac.uk/stilts/stilts.jar
 
-$(JARFILE): $(JSRC) stilts.jar
+$(VERSION_FILE): $(JSRC)
+	git show -s --format=%h >$@
+
+$(JARFILE): $(JSRC) $(VERSION_FILE) stilts.jar 
 	rm -rf tmp
 	mkdir tmp
 	javac -classpath stilts.jar -d tmp $(JSRC)
 	javadoc -docletpath stilts.jar -doclet '$(DOCLET)$$Html' -d tmp $(JSRC)
 	cp $(JSRC) tmp/
+	cp $(VERSION_FILE) tmp/
 	cp makefile tmp/
 	cd tmp; jar cf ../$@ *
 	rm -rf tmp
@@ -35,7 +40,7 @@ funcs: build
 
 clean:
 	rm -rf tmp
-	rm -f $(JARFILE)
+	rm -f $(JARFILE) $(VERSION_FILE)
 
 veryclean: clean
 	rm -f stilts.jar
