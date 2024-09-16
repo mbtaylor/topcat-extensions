@@ -11,7 +11,7 @@ See documentation like
 
 Execute like:
 
-   stilts -classpath euclidTile.jar -Djel.classes=EuclidTile calc 'euclidTileIds(76,-45.4)'
+   stilts -classpath euclidtile.jar -Djel.classes=EuclidTile calc 'euclidTileIds(76,-45.4)'
    ->   [102024002, 102024003]
 
 
