@@ -38,6 +38,10 @@ test: build
 funcs: build
 	$(TSTILTS) funcs
 
+deploy: $(JARFILE) test
+	cp $(JARFILE) /home/mbt/public_html/euclid/
+	websync euclid
+
 clean:
 	rm -rf tmp
 	rm -f $(JARFILE) $(VERSION_FILE)
