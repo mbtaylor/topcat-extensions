@@ -72,11 +72,14 @@ public class EuclidTile {
     private EuclidTile() {
     }
 
-    /** Service nickname for OTF. */
+    /** Service nickname for OTF (on-the-fly). */
     public static final String OTF = "otf";
 
-    /** Service nickname for IDR. */
+    /** Service nickname for IDR (internal data release). */
     public static final String IDR = "idr";
+
+    /** Service nickname for REG (regression). */
+    public static final String REG = "reg";
 
     /** Filter name DECAM_g. */
     public static final String DECAM_g = "DECAM_g";
