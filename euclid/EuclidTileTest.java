@@ -30,6 +30,11 @@ public class EuclidTileTest {
         }
     }
 
+    /**
+     * Main method.
+     *
+     * @param  args  ignored
+     */
     public static void main(String[] args) {
         test();
         System.out.println();

@@ -21,7 +21,9 @@ $(JARFILE): $(JSRC) $(VERSION_FILE) stilts.jar
 	rm -rf tmp
 	mkdir tmp
 	javac -classpath stilts.jar -d tmp $(JSRC)
-	javadoc -docletpath stilts.jar -doclet '$(DOCLET)$$Html' -d tmp $(JSRC)
+	javadoc -classpath stilts.jar \
+                -docletpath stilts.jar -doclet '$(DOCLET)$$Html' \
+                -d tmp $(JSRC)
 	cp $(JSRC) tmp/
 	cp $(VERSION_FILE) tmp/
 	cp makefile tmp/
